@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "minha-vaga-especial",
+    "slug": "minha-vaga-especial",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
