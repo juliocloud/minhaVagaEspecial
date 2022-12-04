@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import * as Location from 'expo-location';
-import { View, Text, ActivityIndicator } from 'react-native';
-import MapView from 'react-native-maps';
 
+import { View, Text, ActivityIndicator } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
+import * as Location from 'expo-location';
 
 import { styles } from './styles';
+import { parkingSpots } from '../../parkingSpots/index.js';
 
 export function Map(){
      const [currentUserLocation, setCurrentUserLocation] = useState(0);
@@ -46,7 +47,11 @@ export function Map(){
                          showsPointsOfInterest={false}
                          showsUserLocation={true}
                     >
-     
+                    <Marker
+                         coordinate={{
+                              latitude: parkingSpots[0].latitude,
+                              longitude: parkingSpots[0].longitude
+                    }}/>
                     </MapView>
                </View>
           )
