@@ -5,7 +5,14 @@ export const parkingSpots = [
           "Tesla HQ",
           37.40888176441965, 
           -122.14196713654653
-     )
+     ),
+     new ParkingSpot(
+          "MiddleField RD, Palo Alto",
+          "United States of America",
+          "Cubberley Community Center",
+          37.41716691769262, 
+          -122.10841353229993
+     ) 
 ]
 
 export function ParkingSpot(
