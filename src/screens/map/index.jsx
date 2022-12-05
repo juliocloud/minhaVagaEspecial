@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import * as Location from 'expo-location';
@@ -10,6 +10,7 @@ import { parkingSpots } from '../../parkingSpots/index.js';
 
 let sortedParkingSpotsDistancesFromUser;
 let sortedParkingSpotsCoords = [];
+let defaultMapZoom = 0.00013033 //TODO: testar se colocar o zoom em variavel funciona ou nao 
 
 export function Map(){
      const [currentUserLocation, setCurrentUserLocation] = useState(0);
@@ -128,7 +129,7 @@ export function Map(){
 
           //Esta funcao ordena os parkingSpots a partir das distancias ordenadas
           sortParkingSpotsCoordinates(sortedParkingSpotsDistancesFromUser) 
- 
+        
           //TODO: Criar uma condicional para renderizar o mapa apenas quando as coordeneadas estiverem ordenadas
 
           return(
@@ -139,18 +140,48 @@ export function Map(){
                          initialRegion={{
                               latitude: currentUserLocation.coords.latitude,
                               longitude: currentUserLocation.coords.longitude,
-                              latitudeDelta: 0.00013033,
-                              longitudeDelta: 0.00013033
+                              latitudeDelta: defaultMapZoom,
+                              longitudeDelta: defaultMapZoom
                          }}
                          showsPointsOfInterest={false}
                          showsUserLocation={true}
                     >
+                         {
+                              parkingSpots.map(spot => {
+                                   return (
+                                        <Marker 
+                                             coordinate={{
+                                                  latitude: spot.latitude,
+                                                  longitude: spot.longitude
+                                             }}
+                                        />
+                                   )
+                              })
+                         }
                     <Marker
                          coordinate={{
                               latitude: parkingSpots[0].latitude,
                               longitude: parkingSpots[0].longitude
                     }}/>
                     </MapView>
+
+                    <ScrollView
+                         style={styles.spotContainer}
+                         horizontal
+                         pagingEnabled
+                    >
+                    {
+                         (
+                              sortedParkingSpotsDistancesFromUser.map((i) => (
+                                   <View style={styles.spot}>
+                                        <Text>
+                                        {parkingSpots[sortedParkingSpotsDistancesFromUser.indexOf(i)].institutionName}
+                                        </Text>
+                                   </View>
+                              ))
+                         )
+                    }
+                    </ScrollView>
                </View>
           )
      }

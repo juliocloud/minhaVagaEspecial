@@ -12,6 +12,13 @@ export const parkingSpots = [
           "Cubberley Community Center",
           37.41716691769262, 
           -122.10841353229993
+     ),
+     new ParkingSpot(
+          "Palo Alto",
+          "United States of America",
+          "Hnery M Gunn High School",
+          37.40256691769262, 
+          -122.13340353229993
      ) 
 ]
 
