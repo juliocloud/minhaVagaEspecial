@@ -7,6 +7,7 @@ import * as Location from 'expo-location';
 
 import { styles } from './styles';
 import { parkingSpots } from '../../parkingSpots/index.js';
+import { MainButton } from '../../components/mainButton';
 
 let sortedParkingSpotsDistancesFromUser;
 let sortedParkingSpotsCoords = [];
@@ -190,16 +191,12 @@ export function Map(){
                                                        <Text style={styles.infoRowText}>
                                                             {
                                                                  parkingSpots[currentIndex].addressOne
-                                                            }
-                                                       </Text>
-                                                       <Text style={styles.infoRowTitle}>
-                                                            País:  
-                                                       </Text>
-                                                       <Text style={styles.infoRowText}>
+                                                            }, 
                                                             {
                                                                  parkingSpots[currentIndex].addressTwo
                                                             }
                                                        </Text>
+                                                      
                                                        <Text style={styles.infoRowTitle}>
                                                             Instituição:
                                                        </Text>
@@ -209,6 +206,9 @@ export function Map(){
                                                             }
                                                        </Text>
                                                   </View>
+                                             </View>
+                                             <View style={styles.spotButton}>
+                                                  <MainButton title={'Validar'}/>
                                              </View>
                                         </View>)
                               })

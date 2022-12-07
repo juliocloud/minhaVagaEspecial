@@ -61,5 +61,11 @@ export const styles = StyleSheet.create({
      },
      infoRowText: {
           fontSize: 20
+     },
+     spotButton: {
+          alignItems: 'center',
+          marginTop: 'auto',
+          marginBottom: 'auto'
+
      }
 })
