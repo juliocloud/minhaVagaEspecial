@@ -5,8 +5,6 @@ const dimensions = {
      screenWidth: Dimensions.get('screen').width,
      screenHeight: Dimensions.get('screen').height,
 }
-console.log("Height " + dimensions.screenHeight)
-console.log("Width " + dimensions.screenWidth)
 
 export const styles = StyleSheet.create({
      activityIndicatorContainer: {
@@ -29,7 +27,7 @@ export const styles = StyleSheet.create({
      },
      spotContainer: {
           width: '100%',
-          maxHeight: '30%'
+          maxHeight: '32%'
      },
      spot: {
           width: dimensions.screenWidth/1.2,
@@ -42,7 +40,26 @@ export const styles = StyleSheet.create({
           borderWidth: 1,
           borderBottomStartRadius:0,
           borderBottomEndRadius: 0,
-          alignContent: 'center'
+          alignContent: 'center',
           
+     },
+     rowContainer: {
+          flexDirection: "column",
+          marginLeft: 20,
+          marginTop: 10
+     },
+     spotTitle: {
+          fontSize: 25,
+          fontWeight: 'bold'
+     },
+     infoRowContainer: {
+          flexDirection: 'column'
+     },
+     infoRowTitle: {
+          fontSize: 20,
+          fontWeight: 'bold'
+     },
+     infoRowText: {
+          fontSize: 20
      }
 })

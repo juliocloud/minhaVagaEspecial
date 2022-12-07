@@ -19,7 +19,14 @@ export const parkingSpots = [
           "Hnery M Gunn High School",
           37.40256691769262, 
           -122.13340353229993
-     ) 
+     ) ,
+     new ParkingSpot(
+          "Palo Alto",
+          "United States of America",
+          "Google HQ",
+          37.4219983,
+          -122.084
+     )
 ]
 
 export function ParkingSpot(

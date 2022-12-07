@@ -172,13 +172,46 @@ export function Map(){
                     >
                     {
                          (
-                              sortedParkingSpotsDistancesFromUser.map((i) => (
-                                   <View style={styles.spot}>
-                                        <Text>
-                                        {parkingSpots[sortedParkingSpotsDistancesFromUser.indexOf(i)].institutionName}
-                                        </Text>
-                                   </View>
-                              ))
+                              sortedParkingSpotsDistancesFromUser.map((i) => {
+                                   let currentIndex = sortedParkingSpotsDistancesFromUser.indexOf(i);
+
+                                   return(
+                                        <View style={styles.spot}>
+                                             <View style={styles.rowContainer}>
+                                                  <Text style={styles.spotTitle}> 
+                                                       Vaga {
+                                                            currentIndex + 1 
+                                                       }
+                                                  </Text>
+                                                  <View style={styles.infoRowContainer}>
+                                                       <Text style={styles.infoRowTitle}>
+                                                            Endereço:  
+                                                       </Text>
+                                                       <Text style={styles.infoRowText}>
+                                                            {
+                                                                 parkingSpots[currentIndex].addressOne
+                                                            }
+                                                       </Text>
+                                                       <Text style={styles.infoRowTitle}>
+                                                            País:  
+                                                       </Text>
+                                                       <Text style={styles.infoRowText}>
+                                                            {
+                                                                 parkingSpots[currentIndex].addressTwo
+                                                            }
+                                                       </Text>
+                                                       <Text style={styles.infoRowTitle}>
+                                                            Instituição:
+                                                       </Text>
+                                                       <Text style={styles.infoRowText}>
+                                                            {
+                                                                 parkingSpots[currentIndex].institutionName
+                                                            }
+                                                       </Text>
+                                                  </View>
+                                             </View>
+                                        </View>)
+                              })
                          )
                     }
                     </ScrollView>
