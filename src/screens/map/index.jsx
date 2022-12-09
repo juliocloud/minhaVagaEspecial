@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import * as Location from 'expo-location';
@@ -11,7 +11,7 @@ import { MainButton } from '../../components/mainButton';
 
 let sortedParkingSpotsDistancesFromUser;
 let sortedParkingSpotsCoords = [];
-let defaultMapZoom = 0.00013033 //TODO: testar se colocar o zoom em variavel funciona ou nao 
+let defaultMapZoom = 0.00013033 
 
 export function Map(){
      const [currentUserLocation, setCurrentUserLocation] = useState(0);
@@ -59,14 +59,14 @@ export function Map(){
 
      function sortParkingSpotsCoordinates(sortedDistances){
           /*
-          Nesta funcao ha dois for loops para que possamos comparar
-          a distancia de cada parkingSpot com a distancia ordenada
-          Dessa forma, se a comparacao for verdadeira, adicionamo a 
-          coordenada na lista.
-
-          Se o segundo parkingSpot, por exemplo, for o mais proximo
-          do usuario, colocamos esse parkingSpot como primeiro na
-          lista de coordenadas ordenadas
+          * Nesta funcao ha dois for loops para que possamos comparar
+          * a distancia de cada parkingSpot com a distancia ordenada
+          * Dessa forma, se a comparacao for verdadeira, adicionamo a 
+          * coordenada na lista.
+          *
+          * Se o segundo parkingSpot, por exemplo, for o mais proximo
+          * do usuario, colocamos esse parkingSpot como primeiro na
+          * lista de coordenadas ordenadas
           */
           let currentDistanceBetweenUserAndSpot;
           for(let i = 0; i < parkingSpots.length; i++){
@@ -137,6 +137,7 @@ export function Map(){
                <View style={styles.container}>
                     <StatusBar hidden={true}/>
                     <MapView 
+                         ref={map => this.mapView = map}
                          style={styles.map}
                          initialRegion={{
                               latitude: currentUserLocation.coords.latitude,
@@ -151,6 +152,9 @@ export function Map(){
                               parkingSpots.map(spot => {
                                    return (
                                         <Marker 
+                                             key={parkingSpots.indexOf(spot)}
+                                             ref={mark => spot.mark = mark}
+                                             title={spot.addressOne}
                                              coordinate={{
                                                   latitude: spot.latitude,
                                                   longitude: spot.longitude
@@ -170,6 +174,36 @@ export function Map(){
                          style={styles.spotContainer}
                          horizontal
                          pagingEnabled
+                         onMomentumScrollEnd={
+                              e => {
+                                   const scrolled = e.nativeEvent.contentOffset.x;
+                                   
+                                   let spot = (scrolled > 0)
+                                        ? scrolled / Dimensions.get('window').width
+                                        : 0;
+                                   /*
+                                   * Aqui precisamos arredondar o valor porque o scrolled
+                                   * irá nos retornar um valor em decimal (0.9999). 
+                                   * 
+                                   * Porém precisamos de valores inteiros para acessar um valor
+                                   * específico da array sortedParkingSpotsCoords
+                                   */
+                                   spot = Math.round(spot)
+                                   const { latitude, longitude } = sortedParkingSpotsCoords[spot]
+
+                                   /*
+                                   * animateToCoordinate está em situação deprecated.
+                                   * Estou utilizando animateToRegion
+                                   */
+
+                                   this.mapView.animateToRegion({
+                                        latitude: latitude,
+                                        longitude: longitude,
+                                        latitudeDelta: defaultMapZoom,
+                                        longitudeDelta: defaultMapZoom
+                                   }, 1700)
+                              }
+                         }
                     >
                     {
                          (
