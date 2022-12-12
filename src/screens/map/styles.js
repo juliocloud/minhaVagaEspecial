@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
           marginRight: 'auto',
           marginTop: 12,
           fontSize: 18,
+          textAlign: 'center'
      },
      modalViewTextVariant: {
           marginLeft: 'auto',
