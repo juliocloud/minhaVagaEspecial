@@ -10,15 +10,21 @@ Um mapa, com todas as vagas especiais da cidade, é disponibilizado para o usuá
 
 A partir daí, o usuário pode fazer a validação da vaga pelo aplicativo e estacionar seu veículo
 
+#### 1.1 Features
+
+- Renderização de vagas mais próximas de acordo com a localização do usuário
+- Validação da vaga (ao validar a vaga, o PCD ou idoso poderá utilizá-la sem preocupações)
+- Sem necessidade de carregar cartão de estacionamento, apenas o celular
+
 ### 2. Replicar este projeto
-#### 1.1. Expo
+#### 2.1. Expo
 Este aplicativo foi feito com Expo em conjunto com React Native. Expo é um conjunto de ferramentas para desenvolver aplicativos com React Native.
 
 Primeiramente, clone este repositório e instale o expo com o comando 
 
      npm install expo-cli --global
 
-#### 1.2 Inicializando
+#### 2.2 Inicializando
 Instale as dependências com 
 
      npm install
