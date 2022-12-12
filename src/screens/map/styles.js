@@ -16,6 +16,30 @@ export const styles = StyleSheet.create({
           justifyContent: 'flex-end',
           alignItems: 'flex-end'
      },
+     modalView:{
+          width: '80%', 
+          height: '45%', 
+          borderRadius: 25, 
+          backgroundColor: 'white',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginTop: 'auto',
+          marginBottom: 'auto',
+          borderColor: 'black',
+          borderWidth: 3
+     },
+     modalViewText:{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginTop: 12,
+          fontSize: 18,
+     },
+     modalViewTextVariant: {
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          fontWeight: 'bold',
+          fontSize: 23
+     },   
      map: {
           width: '100%',
           height: '100%',

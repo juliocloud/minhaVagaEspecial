@@ -1,6 +1,11 @@
+/*
+* TODO:Criar um modo de renderizar apenas X vagas perto do usuário (não é
+* necessário renderizar tudo de uma vez)
+*/
+
 import React, { useEffect, useState } from 'react';
 
-import { View, Text, ActivityIndicator, ScrollView, Dimensions } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView, Dimensions, Modal } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import * as Location from 'expo-location';
@@ -135,6 +140,19 @@ export function Map(){
 
           return(
                <View style={styles.container}>
+                    <Modal 
+                         visible={false}
+                         animationType="fade"
+                    >
+                              <View style={styles.modalView}>
+                                   <Text style={styles.modalViewText}>
+                                        Você deseja realmente validar a vaga
+                                   </Text>
+                                   <Text style={styles.modalViewTextVariant}>
+                                        { parkingSpots[0].addressOne } ?
+                                   </Text>
+                              </View>
+                    </Modal>
                     <StatusBar hidden={true}/>
                     <MapView 
                          ref={map => this.mapView = map}
@@ -153,7 +171,7 @@ export function Map(){
                                    return (
                                         <Marker 
                                              key={parkingSpots.indexOf(spot)}
-                                             ref={mark => spot.mark = mark}
+                                             ref={mark => this.mark = mark}
                                              title={spot.addressOne}
                                              coordinate={{
                                                   latitude: spot.latitude,
@@ -163,11 +181,6 @@ export function Map(){
                                    )
                               })
                          }
-                    <Marker
-                         coordinate={{
-                              latitude: parkingSpots[0].latitude,
-                              longitude: parkingSpots[0].longitude
-                    }}/>
                     </MapView>
 
                     <ScrollView
