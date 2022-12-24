@@ -1,10 +1,10 @@
 export const parkingSpots = [
      new ParkingSpot(
-          "Hillview Ave, Palo Alto",
+          "Palo Alto",
           "USA",
-          "Tesla HQ",
-          37.40888176441965, 
-          -122.14196713654653
+          "Google HQ",
+          37.4219983,
+          -122.084
      ),
      new ParkingSpot(
           "MiddleField RD, Palo Alto",
@@ -19,13 +19,13 @@ export const parkingSpots = [
           "Hnery M Gunn High School",
           37.40256691769262, 
           -122.13340353229993
-     ) ,
+     ),
      new ParkingSpot(
-          "Palo Alto",
+          "Hillview Ave, Palo Alto",
           "USA",
-          "Google HQ",
-          37.4219983,
-          -122.084
+          "Tesla HQ",
+          37.40888176441965, 
+          -122.14196713654653
      )
 ]
 
