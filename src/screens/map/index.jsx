@@ -17,7 +17,7 @@ import { MainButton } from '../../components/mainButton';
 let sortedParkingSpotsDistancesFromUser;
 let sortedParkingSpotsCoords = [];
 let defaultMapZoom = 0.00013033 
-
+//Refactor
 export function Map(){
      const [currentUserLocation, setCurrentUserLocation] = useState(0);
      const [alreadyFetchedCurrentUserLocation, setAlreadyFetchedCurrentUserLocation] = useState(false);
