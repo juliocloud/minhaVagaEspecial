@@ -1,8 +1,4 @@
-/*
-* TODO:Criar um modo de renderizar apenas X vagas perto do usuário (não é
-* necessário renderizar tudo de uma vez)
-*/
-
+//TODO: Create a way to render only n spots close to the user 
 import React, { useEffect, useState } from 'react';
 
 import { View, Text, ActivityIndicator, ScrollView, Dimensions, Modal } from 'react-native';
@@ -19,11 +15,10 @@ import { calculateDistanceOfTwoCoordinates, sortParkingSpotsCoordinates } from '
 let sortedParkingSpotsDistancesFromUser;
 let sortedParkingSpotsCoords = [];
 let defaultMapZoom = 0.00013033 
-//Refactor date
+
 export function Map(){
      const [currentUserLocation, setCurrentUserLocation] = useState(0);
      const [alreadyFetchedCurrentUserLocation, setAlreadyFetchedCurrentUserLocation] = useState(false);
-     
      
      useEffect(() => {
           (

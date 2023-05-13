@@ -31,13 +31,13 @@ Instale as dependências com
 
 As dependências utilizadas são: 
 
-- expo 47.0.8
-- expo-splash-screen 0.17.5
-- expo-status-bar 1.4.2
-- react 18.1.0
-- react-native 0.70.5
-- expo-location 5.0.1
-- react-native-maps 1.3.2
+- expo 
+- expo-location 
+- expo-splash-screen 
+- expo-status-bar 
+- react 
+- react-native 
+- react-native-maps 
 
 Inicialize com o expo com o comando
 
